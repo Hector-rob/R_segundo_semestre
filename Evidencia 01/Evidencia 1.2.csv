@@ -1,0 +1,29 @@
+﻿País,ID-Acceso,Nombre,Descripción,Molécula,Polaridad,Hebra
+USA,MW965797,Severe acute respiratory syndrome coronavirus 2 isolate,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/USA/VA-CDC-LC0031700/2021 ORF1ab polyprotein
+(ORF1ab), ORF1a polyprotein (ORF1ab), surface glycoprotein (S),
+ORF3a protein (ORF3a), envelope protein (E), membrane glycoprotein
+(M), ORF6 protein (ORF6), ORF7a protein (ORF7a), ORF7b (ORF7b),
+ORF8 protein (ORF8), nucleocapsid phosphoprotein (N), and ORF10
+protein (ORF10) genes, complete cds.",RNA,+,ss
+Brasil,MT925972,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/environment/BRA/FPOLIS-sewage-11/2019 ORF1ab
+polyprotein, RNA-dependent RNA polymerase region, (ORF1ab) gene,
+partial cds.",RNA,+,ss
+México,MW884219,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/MEX/133706/2021, complete genome.",RNA,+,ss
+India,MW927136,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/IND/Hisar/2020, complete genome.",RNA,+,ss
+Reino Unido,OA976392,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 genome assembly,
+complete genome: monopartite.",RNA,+,ss
+Italia,MW660619,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/ITA/ID3732/2020 surface glycoprotein (S) gene,
+partial cds.",RNA,+,ss
+Rusia,MW741552,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/RUS/Omsk202118_1707/2020, complete genome.",RNA,+,ss
+Francia,LR881474,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+nasopharyngeal genome assembly, chromosome: contig00001.",RNA,+,ss
+Alemania,MW822592,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/DEU/FFM-ZAF1/2021, complete genome.",RNA,+,ss
+España,MW976780,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/ESP/DDG80_Rota_10/2021, complete genome.",RNA,+,ss

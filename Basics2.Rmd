@@ -1,0 +1,136 @@
+---
+title: "BasicosR"
+author: "Equipo 2:Hector, Diego, Sophia"
+date: "3/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ejericio 1
+```{r}
+x = c(10, 11, 13,-1, 6,3)
+print(x)
+```
+##Ejercicio 2
+```{r}
+m =mean(x)
+s =sd(x)
+v =var(x)
+est.x <- c(m,s,v)
+print(est.x)
+```
+##Ejercicio 3
+```{r}
+seq(20,50)
+mean(seq(20,60))
+sum(seq(51,91))
+```
+##Ejercicio 4
+```{r}
+sample(c(-100:50),10)
+```
+##Ejercicio 5
+```{r}
+f = numeric(10)
+f[1] = f[2] = 1
+
+for (i in 3:10){
+  suma = 0
+  suma = f[i-2]+f[i-1]
+  f[i] = suma
+  
+}
+print(f)
+```
+##Ejercicio 6
+```{r}
+a = c(10,20,30,4,50,-60)
+b = c(10,20,30,4,50,-60)
+print(max(a))
+print(min(a))
+print(max(b))
+print(min(b))
+
+```
+##Ejercicio 7
+```{r}
+d = c(10,20)
+g = c(3,4)
+multv = function(d,g){
+mult = d*g
+return(mult)
+}
+
+multv(d,g)
+
+```
+##Ejercicio 8
+```{r}
+v = c(10,20,7,7,7,7)
+num = 7
+contador = 0
+cuenta = function(v,num){
+  for(i in 1:length(v)){
+    if (v[i] == num){
+      contador = (contador + 1)
+    }
+    }
+  return(contador)
+}
+
+cuenta(v,num)
+
+```
+##Ejercicio 9 (incompleto)
+```{r}
+v <- 1:100
+Num <- 5
+Enesimo <- function(V,N){
+  x <- c(V[1])
+  for(a in 1:((V[length(V)]/N)-1)){
+    valor <-  V[1]+N*a
+    x <- append(x,valor)
+  }
+  print(x)
+}
+Enesimo(v,Num)
+```
+##Ejercicio 10
+```{r}
+data = c(1,2104,3,399900,
+1,1600,3,329900,
+1,2400,3,369000,
+1,1416,2,232000,
+1,3000,4,539900,
+1,1985,4,299900,
+1,1534,3,314900,
+1,1427,3,198999,
+1,1380,3,212000,
+1,1494,3,242500,
+1,1940,4,239999,
+1,2000,3,347000,
+1,1890,3,329999,
+1,4478,5,699900,
+1,1268,3,259900,
+1,2300,4,449900,
+1,1320,2,299900,
+1,1236,3,199900)
+
+mt = matrix(data, 18, 4, byrow = TRUE)
+print(mt)
+
+mx = mt[,1:3]
+print(mx)
+
+matrizy=mt[,4]
+my =matrix(matrizy, 18, 1, byrow = TRUE)
+print(my)
+
+resultado = (solve(t(mx)%*%(mx)))%*%(t(mx)%*%(my))
+print(resultado)
+
+```
+

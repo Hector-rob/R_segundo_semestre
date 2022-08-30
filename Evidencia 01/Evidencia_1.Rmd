@@ -1,0 +1,353 @@
+---
+title: "Evidencia 1"
+author: "Hector Robles Villarreal,Sophia Fernanda Valencia Bautista y Diego Sú Gómez"
+
+date: "4/21/2021"
+output: html_document
+---
+EVIDENCIA 1
+
+Análisis de biología computacional
+
+
+-¿Cuál es la situación actual de COVID-19 a nivel mundial, en México, en tu estado de origen y en tu municipio, alcaldía o colonia? Puedes iniciar tu búsqueda en el sitio de Johns Hopkins (Enlaces a un sitio externo.)
+  
+  De acuerdo con la página Johns Hopkins, en México existen 2,036,910 casos confirmados y 212,466 muertes por el COVID-19. Por otro lado, ya contamos con 14,368,074 dosis administradas de la vacuna, 3,927,307 personas totalmente vacunadas y esto en porcentaje significa el 3.11% de la población en México. En cuanto a los estados del país, en Aguascalientes existen cerca de 25,700 casos, y ha habido 2,333 muertes. Por otro lado, en Jalisco, existen 84,489 casos confirmados y ha habido 11,724 decesos. A nivel mundial, hay 143,257,146 casos confirmados, y ha habido cerca de 3,049,180 muertes. En cuanto al estado de la vacunación a nivel mundial, se estima que el 2.79% de la población mundial ya se encuentra vacunada, lo que son aproximadamente 212,517,441 personas. Con esta información, se puede observar que, aunque se sigue sintiendo el impacto del COVID-19 en la sociedad y en el mundo, también se está viendo una disminución de casos y un buen progreso en la vacunación y la protección contra el virus. Si bien es cierto que México no está dentro de los 5 países con mayor cantidad de vacunados (EUA, Reino Unido, Brasil, India, Turquía), también se puede ver que hay progreso y eso está contribuyendo a que el impacto del COVID sea cada vez menor en la sociedad. (Johns Hopkins, 2021)
+
+¿Cuál fue la primera variante del virus que se propagó a todo el mundo?
+  
+  La primera variante del virus en existir fue la llamada SARS-CoV-2, que se originó en Wuhan, China, específicamente en la provincia de Hubei. Se descubrió en 2019, y fue la primera variante del virus que se terminó expandiendo alrededor del mundo. (Clinic Barcelona, 2020)
+
+¿Cuáles son las otras variantes del virus que existen en otras regiones del mundo?
+
+  Algunas de las variantes del coronavirus que existen en el mundo son las siguientes:
+B.1.1.7 de Reino Unido
+501-Y de África, DG14G de Estados Unidos
+VOC-202012/01 de Brasil
+B.1.35 de Sudáfrica
+B.1.53 y B.1.25 de New York
+P.1 de Brasil o Japón
+P.2 de Brasil
+B.1.43 de California.
+
+¿Cómo buscarías información de la variante del virus en tu país?
+
+  En un buscador con fuentes confiables como Refseek o en alguna página como la OMS o en CDC que fueron las páginas que nos ayudaron a encontrar las variantes de virus en otras regiones del mundo. Lo buscaríamos como “variantes de SARS-COV-2 en México” o con palabras clave que nos lleven a lo que buscamos. Se usarían estas fuentes oficiales, ya que son las que están llevando un registro y un control de la pandemia, por lo que sería mucho más sencillo y confiable encontrar las variantes aquí en lugar de buscar en periódicos o noticieros que no tienen tanto grado de confiabilidad como estos sitios. Otro lugar donde se podría buscar esta información es en universidades o laboratorios que estén realizando estudios del virus, debido a que también sería fácil encontrar estas variantes bien explicadas y de forma confiable.
+
+¿Cuál es la clasificación del SARS-COV 2, de acuerdo al modelo de Baltimore? 
+  
+  Pertenece a la familia 4 o la familia 6 ya que ambas comienzan con una cadena positiva de RNA y de solo una hebra, que es igual a la composición del SARS-COV2, por lo que pertenecería a alguna de estas 2 familias. 
+
+Imagina que te encuentras en una situación similar a la de Li Wenliang, médico chino que intentó alertar sobre el brote de coronavirus en su país, pero fue detenido por las autoridades y obligado a retractarse, ¿qué harías en su caso? Selecciona un inciso:a) Lo reportas al centro de investigación o la universidad. b) Lo reportas a la prensa. c) Guardas la información. Elige y justifica tu respuesta. Revisa el siguiente video como apoyo:
+
+  Lo hubiéramos reportado a la prensa porque de esta manera se alcanzaría una rápida difusión de la información, en ese caso creemos que se pudo haber prevenido una pandemia tan fuerte si se hubiese tenido conocimiento de lo que se iba a enfrentar. Otra razón por la que sería mejor reportar a la prensa, es porque puede llegar a internacionalizarse la noticia, lo que incrementaría el nivel de alerta en las personas, y eso posiblemente pudo haber llevado a que se siguieran de manera más pronta las indicaciones de cuarentena en lugar de esperar a que el virus se expandiera tan rápido.  Además es una forma de protegernos o tener un respaldo de que hicimos algo bueno y si nos pasara algo, como ser detenidos, la gente sabrá porqué y tendríamos más apoyo contra los que quieren silenciarnos o no darle tanta importancia al tema. Es por estas razones por las que el equipo considera que es mejor reportarlo a la prensa por su rápida difusión tanto nacional como internacional, además de la protección que nos daría y el impacto que puede causar en la sociedad y las autoridades.
+
+
+Referencias:
+CDC. (2 de abril de 2021). Acerca de las variantes del virus que causa el COVID-19. Centros para el Control y la Prevención ​​de Enfermedades. https://espanol.cdc.gov/coronavirus/2019-ncov/transmission/variant.html#:~:text=P.1%3A%20esta%20variante%20se,Jap%C3%B3n%2C%20a%20principios%20de%20enero 
+Johns Hopkins. (2021). Mexico overview. Johns Hopkins University & Medicine. https://coronavirus.jhu.edu/region/mexico 
+OMS. (30 de diciembre 2020). Variantes del SARS-CoV-2. Organización Mundial de la Salud. https://www.who.int/csr/don/31-december-2020-sars-cov2-variants/es/ 
+Clínica Barcelona. (2020) ¿Qué es el Coronavirus SARS-CoV-2? Recuperado el 20/04/21 de https://www.clinicbarcelona.org/asistencia/enfermedades/covid-19/definicion 
+
+
+```{r}
+library(ape) 
+library("seqinr")
+library(ggplot2)
+```
+##1. Carga el archivo en un data frame
+```{r}
+df <- read.csv("Evidencia 1.2.csv" ,header = TRUE)
+df
+```
+##2. Calcula la longitud de las secuencias de cada variable
+```{r}
+covid_USA <- read.GenBank(df[1,2],as.character = TRUE)
+covid_Brasil <-read.GenBank(df[2,2],as.character = TRUE)
+covid_Mexico <-read.GenBank(df[3,2],as.character = TRUE)
+covid_India <-read.GenBank(df[4,2],as.character = TRUE)
+covid_ReinoU <-read.GenBank(df[5,2],as.character = TRUE)
+covid_Italia <-read.GenBank(df[6,2],as.character = TRUE)
+covid_Rusia <-read.GenBank(df[7,2],as.character = TRUE)
+covid_Francia <-read.GenBank(df[8,2],as.character = TRUE)
+covid_Alemania <-read.GenBank(df[9,2],as.character = TRUE)
+covid_España <-read.GenBank(df[10,2],as.character = TRUE)
+
+
+
+
+
+
+dftamañoUSA <- as.data.frame(count(covid_USA$MW965797, wordsize = 1))
+dftamañoBrasil <- as.data.frame(count(covid_Brasil$MT925972, wordsize = 1))
+dftamañoMexico <- as.data.frame(count(covid_Mexico$MW884219, wordsize = 1))
+dftamañoIndia <- as.data.frame(count(covid_India$MW927136, wordsize = 1))
+dftamañoReinoU <- as.data.frame(count(covid_ReinoU$OA976392, wordsize = 1))
+dftamañoItalia <- as.data.frame(count(covid_Italia$MW660619, wordsize = 1))
+dftamañoRusia <- as.data.frame(count(covid_Rusia$MW741552, wordsize = 1))
+dftamañoFrancia <- as.data.frame(count(covid_Francia$LR881474, wordsize = 1))
+dftamañoAlemania <- as.data.frame(count(covid_Alemania$MW822592, wordsize = 1))
+dftamañoEspaña <- as.data.frame(count(covid_España$MW976780, wordsize = 1))
+
+
+longitud = function(dataframe){
+  tamaño <- 0
+  for (i in 1:4){
+    tamaño <- dataframe[i,2] + tamaño
+  }
+  return(tamaño)
+}
+cat("Tamaño de la secuencia de COVID de USA:",longitud(dftamañoUSA),"\n")
+cat("Tamaño de la secuencia de COVID de Brasil :",longitud(dftamañoBrasil),"\n")
+cat("Tamaño de la secuencia de COVID de Mexico:",longitud(dftamañoMexico),"\n")
+cat("Tamaño de la secuencia de COVID de India:",longitud(dftamañoIndia),"\n")
+cat("Tamaño de la secuencia de COVID de Reino Unido:",longitud(dftamañoReinoU),"\n")
+cat("Tamaño de la secuencia de COVID de Italia:",longitud(dftamañoItalia),"\n")
+cat("Tamaño de la secuencia de COVID de Rusia:",longitud(dftamañoRusia),"\n")
+cat("Tamaño de la secuencia de COVID de Francia:",longitud(dftamañoFrancia),"\n")
+cat("Tamaño de la secuencia de COVID de Alemania:",longitud(dftamañoAlemania),"\n")
+cat("Tamaño de la secuencia de COVID de España:",longitud(dftamañoEspaña),"\n")
+
+
+
+```
+
+##3. Crea graficas que comparen las bases de ADN de cada secuencia
+
+```{r}
+##Grafica que compara tamaños
+tamanios_sec <- data.frame( "País" = c("USA","Brasil","Mexico","India","Reino Unido","Italia","Rusia","Francia","Alemania","España"), "Tamaño" = c(longitud(dftamañoUSA), longitud(dftamañoBrasil),longitud(dftamañoMexico),  longitud(dftamañoIndia), longitud(dftamañoReinoU), longitud(dftamañoItalia), longitud(dftamañoRusia), longitud(dftamañoFrancia), longitud(dftamañoAlemania), longitud(dftamañoEspaña)))
+
+
+graficatamaños <- ggplot(data = tamanios_sec, aes(x=País, y=Tamaño, fill=País)) +
+           geom_bar(stat = "identity") +
+           geom_text(aes(label=Tamaño), vjust = 0) +
+           theme_classic()
+
+graficatamaños
+```
+
+```{r}
+##Cambia valores de Encabezados para que en la grafica salgan el nombre del virus y nucleotidos
+names(dftamañoUSA)[1] <- "COVID_USA"
+names(dftamañoUSA)[2] <- "Nucleotidos"
+names(dftamañoBrasil)[1] <- "COVID_Brasil"
+names(dftamañoBrasil)[2] <- "Nucleotidos"
+names(dftamañoMexico)[1] <- "COVID_Mexico"
+names(dftamañoMexico)[2] <- "Nucleotidos"
+names(dftamañoIndia)[1] <- "COVID_India"
+names(dftamañoIndia)[2] <- "Nucleotidos"
+names(dftamañoReinoU)[1] <- "COVID_Reino_Unido"
+names(dftamañoReinoU)[2] <- "Nucleotidos"
+names(dftamañoItalia)[1] <- "COVID_Italia"
+names(dftamañoItalia)[2] <- "Nucleotidos"
+names(dftamañoRusia)[1] <- "COVID_Rusia"
+names(dftamañoRusia)[2] <- "Nucleotidos"
+names(dftamañoFrancia)[1] <- "COVID_Francia"
+names(dftamañoFrancia)[2] <- "Nucleotidos"
+names(dftamañoAlemania)[1] <- "COVID_Alemania"
+names(dftamañoAlemania)[2] <- "Nucleotidos"
+names(dftamañoEspaña)[1] <- "COVID_España"
+names(dftamañoEspaña)[2] <- "Nucleotidos"
+
+##USA
+graficaUSA <- ggplot(data = dftamañoUSA, aes(x=COVID_USA,y=Nucleotidos,fill=COVID_USA)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Nucleotidos),vjust= 0) +
+           scale_fill_manual(values = c("a" = "red", "c" = "white", "g" = "blue", "t"=    "yellow")) +
+           theme_dark() 
+
+graficaBrasil <- ggplot(data = dftamañoBrasil, aes(x=COVID_Brasil,y=Nucleotidos,fill=COVID_Brasil)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Nucleotidos),vjust= 0) +
+           scale_fill_manual(values = c("a" = "Dark green", "c" = "yellow", "g" = "blue", "t"=    "white")) +
+           theme_dark() 
+  
+graficaMexico <- ggplot(data = dftamañoMexico, aes(x=COVID_Mexico,y=Nucleotidos,fill=COVID_Mexico)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Nucleotidos),vjust= 0) +
+           scale_fill_manual(values = c("a" = " Dark green", "c" = "white", "g" = "red", "t"=    "brown")) +
+           theme_dark() 
+
+graficaIndia <- ggplot(data = dftamañoIndia, aes(x=COVID_India,y=Nucleotidos,fill=COVID_India)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Nucleotidos),vjust= 0) +
+           scale_fill_manual(values = c("a" = "orange", "c" = "white", "g" = "green", "t" = "light blue")) +
+           theme_dark()
+
+graficaReinoU<- ggplot(data = dftamañoReinoU, aes(x=COVID_Reino_Unido,y=Nucleotidos,fill=COVID_Reino_Unido)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Nucleotidos),vjust= 0) +
+           scale_fill_manual(values = c("a" = "red", "c" = "blue", "g" = "white", "t"=    "black")) +
+           theme_dark()
+
+graficaItalia <- ggplot(data = dftamañoItalia, aes(x=COVID_Italia,y=Nucleotidos,fill=COVID_Italia)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Nucleotidos),vjust= 0) +
+           scale_fill_manual(values = c("a" = "Dark green", "c" = "white", "g" = "red", "t"=    "orange")) +
+           theme_dark() 
+
+graficaRusia <- ggplot(data = dftamañoRusia, aes(x=COVID_Rusia,y=Nucleotidos,fill=COVID_Rusia)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Nucleotidos),vjust= 0) +
+           scale_fill_manual(values = c("a" = "blue", "c" = "white", "g" = "red", "t"=    "black")) +
+           theme_dark() 
+
+graficaFrancia<- ggplot(data = dftamañoFrancia, aes(x=COVID_Francia,y=Nucleotidos,fill=COVID_Francia)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Nucleotidos),vjust= 0) +
+           scale_fill_manual(values = c("a" = "blue", "c" = "white", "g" = "red", "t"=    "black")) +
+           theme_dark() 
+
+graficaAlemania <- ggplot(data = dftamañoAlemania, aes(x=COVID_Alemania,y=Nucleotidos,fill=COVID_Alemania)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Nucleotidos),vjust= 0) +
+           scale_fill_manual(values = c("a" = "black", "c" = "red", "g" = "yellow", "t"=    "orange")) +
+           theme_dark() 
+
+graficaEspaña<- ggplot(data = dftamañoEspaña, aes(x=COVID_España,y=Nucleotidos,fill=COVID_España)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Nucleotidos),vjust= 0) +
+           scale_fill_manual(values = c("a" = "red", "c" = "yellow", "g" = "brown", "t"=    "orange")) +
+           theme_dark() 
+
+
+graficaUSA
+graficaBrasil
+graficaMexico
+graficaIndia
+graficaReinoU
+graficaItalia
+graficaRusia
+graficaFrancia
+graficaAlemania
+graficaEspaña
+```
+Interpretaciones de las gráficas
+
+Para comparar las distintas secuencias de COVID-19 de los 10 países más afectados por este virus, realizamos 11 gráficas, 1 que compara los tamaños de las secuencias por país, y otras 10 que comparan el número de nucleótidos que conforman a cada secuencia de manera individual. 
+Al hacer un análisis de estos gráficos, se puede determinar que:
+-La secuencia de mayor tamaño es la de Rusia conformada por 29903 nucleótidos.
+-La secuencia de menor tamaño es la de Brasil conformada por 277 nucleótidos.
+-La secuencia con mayor cantidad de adenina es la de Rusia, conformada por 8955 bases de adenina que representan el 29.94% de su composición.
+-La secuencia con mayor cantidad de citosina es también la de Rusia, conformada por 5491 bases de citosina, que representan el 18.34% de su composición.
+-La secuencia con mayor cantidad de guanina es la de India, conformada por 5860 bases de guanina, que representan el 32.13% de su composición.
+-La secuencia con mayor cantidad de timina es la de México con 9602 bases de este mismo, los cuales son el 19.58% de su composición.
+-La secuencia con menor cantidad de adenina es la de Italia conformada por 79 bases de adenina, que representan el 28% de su composición.
+-Las secuencias con menor cantidad de citosina son la de Italia y Brasil con 49 bases de adenina cada una, que representan el 17.37% y el 17.68%  de su composición, respectivamente.
+-La secuencia con menor cantidad de guanina es la de Italia con 48 bases de guanina, que representan el 37.58% de su composición.
+-La secuencia con menor cantidad de timina es la de Brasil con 81 bases de timina, que representan el 18.41% de su composición.
+
+
+##4. ¿Cuál es el porcentaje de repetición de cada nucléotido?
+```{r}
+Porcentajes <- function(V){
+  Total <- V[1,2]+V[2,2]+V[3,2]+V[4,2]
+  A <- (V[1,2]/Total)*100
+  C <- (V[2,2]/Total)*100
+  G <- (V[3,2]/Total)*100
+  T <- (V[4,2]/Total)*100
+  cat("Porcentaje de Adenina = ",A,"%\n")
+  cat("Porcentaje de Citosina = ",C,"%\n")
+  cat("Porcentaje de Timina = ",G,"%\n")
+  cat("Porcentaje de Guanina = ",T,"%\n")
+}
+
+print("Variante Estados Unidos")
+Porcentajes(dftamañoUSA)
+print("Variante Brasil")
+Porcentajes(dftamañoBrasil)
+print("Variante México")
+Porcentajes(dftamañoMexico)
+print("Variante India")
+Porcentajes(dftamañoIndia)
+print("Variante Reino Unido")
+Porcentajes(dftamañoReinoU)
+print("Variante Italia")
+Porcentajes(dftamañoItalia)
+print("Variante Rusia")
+Porcentajes(dftamañoRusia)
+print("Variante Francia")
+Porcentajes(dftamañoFrancia)
+print("Variante Alemania")
+Porcentajes(dftamañoAlemania)
+print("Variante España")
+Porcentajes(dftamañoEspaña)
+```
+##5. ¿Cuál es el %GC de cada secuencia?
+```{r}
+PGC <- function(V){
+  Total <- (V[1,2]+V[2,2]+V[3,2]+V[4,2])
+  C <- (V[2,2]/Total)*100
+  G <- (V[3,2]/Total)*100
+  cat("Porcentaje de Citosina = ",C,"%\n")
+  cat("Porcentaje de Guanina = ",G,"%\n")
+}
+
+print("Variante Estados Unidos")
+PGC(dftamañoUSA)
+print("Variante Brasil")
+PGC(dftamañoBrasil)
+print("Variante México")
+PGC(dftamañoMexico)
+print("Variante India")
+PGC(dftamañoIndia)
+print("Variante Reino Unido")
+PGC(dftamañoReinoU)
+print("Variante Italia")
+PGC(dftamañoItalia)
+print("Variante Rusia")
+PGC(dftamañoRusia)
+print("Variante Francia")
+PGC(dftamañoFrancia)
+print("Variante Alemania")
+PGC(dftamañoAlemania)
+print("Variante España")
+PGC(dftamañoEspaña)
+```
+
+##6. Crea las hebras contrasentido de cada secuencia obtenida.
+```{r}
+
+
+cadenaUSA = covid_USA$MW965797[1:longitud(dftamañoUSA)]
+cadenaBrasil = covid_Brasil$MT925972[1:longitud(dftamañoBrasil)]
+cadenaMexico = covid_Mexico$MW884219[1:longitud(dftamañoMexico)]
+cadenaIndia = covid_India$MW927136[1:longitud(dftamañoIndia)]
+cadenaReinoU = covid_ReinoU$OA976392[1:longitud(dftamañoReinoU)]
+cadenaItalia = covid_Italia$MW660619[1:longitud(dftamañoItalia)]
+cadenaRusia = covid_Rusia$MW741552[1:longitud(dftamañoRusia)]
+cadenaFrancia = covid_Francia$LR881474[1:longitud(dftamañoFrancia)]
+cadenaAlemania = covid_Alemania$MW822592[1:longitud(dftamañoAlemania)]
+cadenaEspaña = covid_España$MW976780[1:longitud(dftamañoEspaña)]
+contraria = function(df){
+  rev_df = rev(df)
+  return(rev_df)
+}
+
+cat("Hebra complementaria de USA: \n")
+contraria(cadenaUSA)
+cat("Hebra complementaria de Brasil: \n")
+contraria(cadenaBrasil)
+cat("Hebra complementaria de Mexico: \n")
+contraria(cadenaMexico)
+cat("Hebra complementaria de India: \n")
+contraria(cadenaIndia)
+cat("Hebra complementaria de Reino Unido: \n")
+contraria(cadenaReinoU)
+cat("Hebra complementaria de Italia: \n")
+contraria(cadenaItalia)
+cat("Hebra complementaria de Rusia: \n")
+contraria(cadenaRusia)
+cat("Hebra complementaria de Francia: \n")
+contraria(cadenaFrancia)
+cat("Hebra complementaria de Alemania: \n")
+contraria(cadenaAlemania)
+cat("Hebra complementaria de España: \n")
+contraria(cadenaEspaña)
+
+
+
+```
+
+

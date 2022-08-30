@@ -1,0 +1,286 @@
+---
+title: "Adn"
+author: "Hector"
+date: "4/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Ejercicio 1
+```{r}
+n =9  ##runif(1,min=1,max=21)
+fdna = function(n){
+dna = c("A","T","C","","")
+seq_dna = sample(dna, n, replace = TRUE)
+return(seq_dna)
+}
+
+fdna(n)
+
+
+```
+
+
+
+##Ejercicio 2
+```{r}
+v = fdna(n)
+
+TAdn = function(Vector){
+  contador = 0
+  for (i in length(v)){
+    contador = contador + i
+  }
+  return (contador)
+
+}
+
+TAdn(v)
+```
+
+##Ejercicio 3
+```{r}
+v = fdna(n)
+tamaño = TAdn(v)
+
+porcentaje = function(v){
+  contadorA = 0
+  contadorT = 0
+  contadorG = 0
+  contadorC = 0
+  for (i in 1:tamaño){
+    if (v[i] == "A"){
+      contadorA = contadorA + 1
+    }
+    else if (v[i] == "T"){
+      contadorT = contadorT + 1
+    }
+    else if (v[i] == "G"){
+      contadorG = contadorG + 1
+    }
+    else if (v[i] == "C"){
+      contadorC = contadorC + 1
+    }
+  }
+    porA = (contadorA / tamaño) * 100
+    porT = ((contadorT / tamaño) * 100)
+    porG = ((contadorG / tamaño) * 100)
+    porC = ((contadorC / tamaño) * 100)
+    print("Secuencia de ADN:")
+    print(v)
+    print("Tamaño de la secuencia")
+    print(tamaño)
+    print("Porcentaje de A")
+    print(porA)
+    print("Porcentaje de T")
+    print(porT)
+    print("Porcentaje de G")
+    print(porG)
+    print("Porcentaje de C")
+    print(porC)
+  }
+
+
+
+porcentaje(v)
+```
+##Ejercicio 4
+```{r}
+v = fdna(n)
+print(v)
+
+rna = function(secu){
+  for (i in 1:length(secu)){
+    if(secu[i] == "A"){
+      secu[i] = "U"
+    }
+    else if (secu[i] == "T"){
+      secu[i] = "A"
+    }
+    else if (secu[i] == "C"){
+      secu[i] = "G"
+    }
+    else if (secu[i] == "G"){
+      secu[i] = "C"
+    }
+  }
+  print(secu)
+}
+rna(v)
+  
+```
+##Ejercicio 5
+```{r}
+v = fdna(n)
+print('ADN:')
+print(v)
+print('ARN:')
+r = rna(v)
+
+traducir = function(cadena){
+  proteina = c()
+  for (i in seq(1,length(cadena),3)){
+    if(cadena[i] == 'U'){
+      if(cadena[i+1] =='U'){
+        if(cadena[i+2]== 'U'||cadena[i+2]== 'C'){
+          proteina = append(proteina,'Phe')
+        }
+        else if(cadena[i+2]=='A'||cadena[i+2]== 'G'){
+          proteina = append(proteina,'Leu')
+        }
+        }
+      else if(cadena[i+1] == 'C'){
+        proteina = append(proteina,'Ser')
+      }
+      else if(cadena[i+1] == 'A'){
+        if(cadena[i+2]== 'U'||cadena[i+2]== 'C'){
+          proteina = append(proteina,'Tyr')
+        }
+          else if (cadena[i+2]== 'A'||cadena[i+2]== 'G'){
+            break
+          }
+      }
+      else if(cadena[i+1] == 'G'){
+        if(cadena[i+2]== 'U'||cadena[i+2]== 'C'){
+          cproteina = append(proteina,'Cys')
+        }
+        else if(cadena[i+2]=='A'){
+          break
+        }
+        else if(cadena[i+2]=='G'){
+          proteina = append(proteina,'Trp')
+        }
+      }
+      
+    }
+    else if(cadena[i] == 'C'){
+      if(cadena[i+1] == 'U'){
+        proteina = append(proteina,'Leu')
+      }
+      else if(cadena[i+1] == 'C'){
+        proteina = append(proteina,'Pro')
+      }
+      else if(cadena[i+1] == 'A'){
+        if(cadena[i+2]== 'U'||cadena[i+2]== 'C'){
+          proteina = append(proteina,'His')
+        }
+      else if(cadena[i+2]== 'A'||cadena[i+2]== 'G'){
+          proteina = append(proteina,'Gln')
+        }
+      }
+      else if(cadena[i+1] == 'C'){
+        proteina = append(proteina,'Arg')
+      }
+    }
+    else if(cadena[i] == 'A'){
+      if(cadena[i+1] == 'U'){
+        if(cadena[i+2]== 'U'||cadena[i+2]== 'C'||cadena[i+2]== 'A'){
+          proteina = append(proteina,'Ile')
+        }
+        else if(cadena[i+2]== 'G'){
+          proteina = append(proteina,'Met')
+        }
+      }
+      else if(cadena[i+1] == 'C'){
+        proteina = append(proteina,'Thr')
+      }
+      else if(cadena[i+1] == 'A'){
+        if(cadena[i+2]== 'U'||cadena[i+2]== 'C'){
+          proteina = append(proteina,'Asn')
+        }
+        else if(cadena[i+2]== 'A'||cadena[i+2]== 'G'){
+          proteina = append(proteina,'Lys')
+        }
+      }
+      else if(cadena[i+1] == 'G'){
+        if(cadena[i+2]== 'U'||cadena[i+2]== 'C'){
+          proteina = append(proteina,'Ser')
+        }
+        else if(cadena[i+2]== 'A'||cadena[i+2]== 'G'){
+          proteina = append(proteina,'Arg')
+        }
+      }
+    }
+    else if(cadena[i] == 'G'){
+      if(cadena[i+1] == 'U'){
+        proteina = append(proteina,'Val')
+      }
+      else if(cadena[i+1] == 'C'){
+        proteina = append(proteina,'Ala')
+      }
+      else if(cadena[i+1] == 'G'){
+        proteina = append(proteina,'Gly')
+      }
+      else if(cadena[i+1] == 'A'){
+        if(cadena[i+2]== 'U'||cadena[i+2]== 'C'){
+          proteina = append(proteina,'Asp')
+        }
+        else if(cadena[i+2]== 'A'||cadena[i+2]== 'G'){
+          proteina = append(proteina,'Glu')
+        }
+      }
+    }
+  }
+  print('Proteína:')
+  print(proteina)
+}
+traducir(r)
+```
+##Ejercicio 6
+```{r}
+vect = fdna(n)
+print('Hebra directa')
+cat("5'-",vect,"-3'\n")
+t = TAdn(vect)
+inversa = function(vect){
+  h = rev(vect)
+  print('Hebra inversa')
+  cat("3'-",h,"-5'")
+}
+inversa(vect)
+```
+##Ejercicio 7
+```{r}
+vec = fdna(n)
+print('Hebra directa')
+cat("5'-",vec,"-3'\n")
+complementaria= function(vec){
+  comp = c()
+  for (i in 1:length(vec)){
+    if (vec[i] == 'A'){
+      comp = append(comp,'T')
+    }
+    else if(vec[i] == 'T'){
+      comp = append(comp,'A')
+    }
+    else if(vec[i] == 'C'){
+      comp = append(comp,'G')
+    }
+    else if(vec[i] == 'G'){
+      comp = append(comp,'C')
+    }
+  }
+  print('Hebra complementaria')
+  cat("3'-",comp,"-5'")
+}
+
+complementaria(vec)
+```
+##Ejercicio 8
+```{r}
+vector = fdna(n)
+print('Hebra complementaria')
+cat("3'-",vector,"-5'\n")
+hebra_directa = function(vector){
+  d= rev(vector)
+  print('Hebra complementaria inversa')
+  cat("5'-",d,"-3'")
+}
+hebra_directa(vector)
+```
+
+

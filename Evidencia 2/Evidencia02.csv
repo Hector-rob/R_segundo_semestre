@@ -1,0 +1,68 @@
+País,ID-Acceso,Nombre,Descripción,Molécula,Polaridad,Hebra
+USA,MW965797,Severe acute respiratory syndrome coronavirus 2 isolate,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/USA/VA-CDC-LC0031700/2021 ORF1ab polyprotein
+(ORF1ab), ORF1a polyprotein (ORF1ab), surface glycoprotein (S),
+ORF3a protein (ORF3a), envelope protein (E), membrane glycoprotein
+(M), ORF6 protein (ORF6), ORF7a protein (ORF7a), ORF7b (ORF7b),
+ORF8 protein (ORF8), nucleocapsid phosphoprotein (N), and ORF10
+protein (ORF10) genes, complete cds.",RNA,+,ss
+Brasil,MW592707,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/BRA/MASP2C844R2/2020, complete genome.",RNA,+,ss
+México,MW884219,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/MEX/133706/2021, complete genome.",RNA,+,ss
+India,MW927136,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/IND/Hisar/2020, complete genome.",RNA,+,ss
+Reino Unido,OA976392,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 genome assembly,
+complete genome: monopartite.",RNA,+,ss
+Italia,MW852494,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/ITA/Novara_Ceinge-Bicocca-01/2021, complete
+genome.",RNA,+,ss
+Rusia,MW741552,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/RUS/Omsk202118_1707/2020, complete genome.",RNA,+,ss
+Francia,LR881474,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+nasopharyngeal genome assembly, chromosome: contig00001.",RNA,+,ss
+Alemania,MW822592,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/DEU/FFM-ZAF1/2021, complete genome.",RNA,+,ss
+España,MW976780,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/ESP/DDG80_Rota_10/2021, complete genome.",RNA,+,ss
+Colombia,MT470219,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/COL/Cali-01/2020, complete genome.",RNA,+,ss
+Irán,MW898809,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/IRN/Hormozgan/2019 ORF1ab polyprotein (ORF1ab),
+ORF1a polyprotein (ORF1ab), surface glycoprotein (S), ORF3a protein
+(ORF3a), and envelope protein (E) genes, complete cds; membrane
+glycoprotein (M) gene, partial cds; and ORF6 protein (ORF6), ORF7a
+protein (ORF7a), ORF7b (ORF7b), ORF8 protein (ORF8), nucleocapsid
+phosphoprotein (N), and ORF10 protein (ORF10) genes, complete cds.",RNA,+,ss
+Polonia,HG994158,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate 1 genome
+assembly, chromosome: 1.",RNA,+,ss
+Argentina,MW633891,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/ARG/Cordoba-83535/2020 ORF1ab polyprotein
+(ORF1ab), ORF1a polyprotein (ORF1ab), surface glycoprotein (S),
+ORF3a protein (ORF3a), envelope protein (E), membrane glycoprotein
+(M), ORF6 protein (ORF6), ORF7a protein (ORF7a), ORF7b (ORF7b),
+ORF8 protein (ORF8), nucleocapsid phosphoprotein (N), and ORF10
+protein (ORF10) genes, complete cds.",RNA,+,ss
+Perú,MW938089,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/PER/un-CDC-2-4070016/2021, complete genome.",RNA,+,ss
+Sudáfrica,MW981442,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/ZAF/KRISP-K005325/2020, complete genome.",RNA,+,ss
+Indonesia,MZ026853,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/IDN/RSDS-RCVTD-UNAIR-35-A/2020 ORF1ab polyprotein
+(ORF1ab), ORF1a polyprotein (ORF1ab), surface glycoprotein (S),
+ORF3a protein (ORF3a), envelope protein (E), membrane glycoprotein
+(M), ORF6 protein (ORF6), ORF7a protein (ORF7a), and ORF7b (ORF7b)
+genes, complete cds; ORF8 gene, complete sequence; and nucleocapsid
+phosphoprotein (N) and ORF10 protein (ORF10) genes, complete cds.",RNA,+,ss
+República Checa,MT534285,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/CZE/SARS-CoV-2_Czechia_March2020/2020, complete
+genome.",RNA,+,ss
+Turquía,MW308549,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/TUR/DENIZLI_PAU/2020, complete genome.",RNA,+,ss
+Romania,MW255830,Severe acute respiratory syndrome coronavirus 2,"Severe acute respiratory syndrome coronavirus 2 isolate
+SARS-CoV-2/human/ROU/BUCHAREST-IMT-1/2020 ORF1ab polyprotein
+(ORF1ab), ORF1a polyprotein (ORF1ab), surface glycoprotein (S),
+ORF3a protein (ORF3a), envelope protein (E), membrane glycoprotein
+(M), ORF6 protein (ORF6), ORF7a protein (ORF7a), ORF7b (ORF7b),
+ORF8 protein (ORF8), nucleocapsid phosphoprotein (N), and ORF10
+protein (ORF10) genes, complete cds.",RNA,+,ss

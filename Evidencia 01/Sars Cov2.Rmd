@@ -1,0 +1,93 @@
+---
+title: "Sars Cov2"
+author: "Hector"
+date: "4/20/2021"
+output: html_document
+---
+
+
+```{r}
+
+library(ape) 
+library("seqinr")
+library(ggplot2)
+
+```
+
+```{r}
+df <- read.csv("virus.csv" ,header = TRUE)
+df
+
+```
+```{r}
+#solamente nombre
+df[,2]
+```
+```{r}
+#3 primeros ids
+df[(1:3),1]
+```
+```{r}
+#Sacar toda la fila como vector
+r <- as.vector(df[1,1:6],mode = "character")
+r
+##Con nombres
+r2 <- c(df[1,1:6])
+r2
+```
+```{r}
+names(df)
+#Cambiar header
+names(df)[1] <- "id_NCBI"
+df
+```
+
+
+##Obtener virus desde NCBI
+```{r}
+zika <-read.GenBank(df[1,1],as.character = TRUE)
+
+zika$NC_035889[1:10]
+
+```
+```{r}
+#Armar df de todos los virus 
+viruses <- read.GenBank(df[,1], as.character = TRUE)
+viruses
+
+```
+
+
+
+```{r}
+#Ver un solo virus y sus primeros 10 nucleotidos
+viruses$NC_004718.3[1:10]
+```
+
+```{r}
+#Ver atributos
+attributes(viruses)
+```
+
+```{r}
+#Contar las repeticiones de cada nucleotido en un virus y guardarlos en un df
+dfZika <- as.data.frame(count(viruses$NC_035889,wordsize = 1))
+dfZika
+```
+```{r}
+#Graficar
+#Se tiene que importar ggplot 2 library(ggplot2)
+grafica <- ggplot(data = dfZika, aes(x=Var1,y=Freq,fill=Var1)) +
+           geom_bar(stat = "identity") + 
+           geom_text(aes(label=Freq),vjust= 0) +
+           scale_fill_manual(values = c("a" = "light green", "c" = "orange", "g" = "blue", "t"=    "red")) +
+           theme_classic()
+grafica
+```
+```{r}
+library(ape)
+text.string <- "((vaca, cerdo), (asgardiano,(kryptonian, humano,kree)));"
+vert.tree <- read.tree(text = text.string)
+plot(vert.tree, no.margin = TRUE)
+```
+

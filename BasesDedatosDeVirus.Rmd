@@ -1,0 +1,303 @@
+---
+title: "Virus_sequencias"
+author: "Hector"
+date: "4/16/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library("seqinr")
+```
+
+#```{r}
+#Zika = read.fasta("SecuenciaZika.fasta")
+#Sars = read.fasta("SecuenciaSARS.fasta")
+#Cov2= read.fasta("SecuenciaCov2.fasta")
+#Mers = read.fasta("SecuenciaMERS.fasta")
+#Dengue = read.fasta("SecuenciaDengue.fasta")
+#Influenza = read.fasta("SecuenciaInfluenza.fasta")
+
+#```
+
+
+#```{r}
+#seqZika = Zika[[1]]
+#seqSars = Sars[[1]]
+#seqCov2 = Cov2[[1]]
+#seqMers = Mers[[1]]
+#seqDengue = Dengue[[1]]
+#seqInfluenza = Influenza[[1]]
+
+#```
+
+```{r}
+Cov2 <- read.fasta("SecuenciaCov2.fasta")
+Zika <- read.fasta("SecuenciaZika.fasta")
+Sars <- read.fasta("SecuenciaSARS.fasta")
+Mers <- read.fasta("SecuenciaMERS.fasta")
+Dengue <- read.fasta("SecuenciaDengue.fasta")
+Influenza <- read.fasta("SecuenciaInfluenza.fasta")
+
+
+```
+
+```{r}
+seqZika = Zika[[1]]
+seqSars = Sars[[1]]
+seqCov2 = Cov2[[1]]
+seqMers = Mers[[1]]
+seqDengue = Dengue[[1]]
+seqInfluenza = Influenza[[1]]
+
+```
+
+
+```{r}
+TAdn = function(Vector){
+  contador = 0
+  for (i in length(Vector)){
+    contador = contador + i
+  }
+  return (contador)
+
+}
+
+cat("Tamaño SARS-CoV2: ",TAdn(seqCov2),"\n")
+cat("Tamaño Zika: ",TAdn(seqZika),"\n")
+cat("Tamaño SARS-CoV: ",TAdn(seqSars),"\n")
+cat("Tamaño MERS: ",TAdn(seqMers),"\n")
+cat("Tamaño Dengue: ",TAdn(seqDengue),"\n")
+cat("Tamaño H1N1: ",TAdn(seqInfluenza),"\n")
+```
+
+
+##Problema 2
+```{r}
+
+  contadorA = 0
+  contadorT = 0
+  contadorG = 0
+  contadorC = 0
+
+Porcentajes = function(v){
+  tamaño = TAdn(v)
+  
+  for (i in 1:tamaño){
+    if (v[i] == "a"){
+      contadorA <- contadorA + 1
+    }
+    else if (v[i] == "t"){
+      contadorT <- contadorT + 1
+    }
+    else if (v[i] == "g"){
+      contadorG <- contadorG + 1
+    }
+    else if (v[i] == "c"){
+      contadorC <- contadorC + 1
+    }
+  }
+    porA = (contadorA / tamaño) * 100
+    porT = ((contadorT / tamaño) * 100)
+    porG = ((contadorG / tamaño) * 100)
+    porC = ((contadorC / tamaño) * 100)
+    print("Porcentaje de Adenina:")
+    cat(porA,"%\n")
+    print("Porcentaje de Timina:")
+    cat(porT,"%\n")
+    print("Porcentaje de Guanina:")
+    cat(porG,"%\n")
+    print("Porcentaje de Citosina:")
+    cat(porC,"%\n")
+  }
+
+
+
+print("COVID-19")
+cat(Porcentajes(seqCov2), "\n\n")
+print("ZIKA")
+cat(Porcentajes(seqZika), "\n\n")
+print("SARS")
+cat(Porcentajes(seqSars), "\n\n")
+print("MERS")
+cat(Porcentajes(seqMers), "\n\n")
+print("DENGUE")
+cat(Porcentajes(seqDengue), "\n\n")
+print("H1N1")
+cat(Porcentajes(seqInfluenza), "\n\n")
+```
+##Problema 3
+```{r}
+contadorA = 0
+contadorT = 0
+contadorG = 0
+contadorC = 0
+
+Porcentajes = function(v){
+  tamaño = TAdn(v)
+  
+  for (i in 1:tamaño){
+    if (v[i] == "a"){
+      contadorA <- contadorA + 1
+    }
+    else if (v[i] == "t"){
+      contadorT <- contadorT + 1
+    }
+    else if (v[i] == "g"){
+      contadorG <- contadorG + 1
+    }
+    else if (v[i] == "c"){
+      contadorC <- contadorC + 1
+    }
+  }
+    porA = (contadorA / tamaño) * 100
+    porT = ((contadorT / tamaño) * 100)
+    porG = ((contadorG / tamaño) * 100)
+    porC = ((contadorC / tamaño) * 100)
+    print("Porcentaje de Guanina:")
+    cat(porG,"%\n")
+    print("Porcentaje de Citosina:")
+    cat(porC,"%\n")
+  }
+
+
+
+print("COVID-19")
+cat(Porcentajes(seqCov2), "\n\n")
+print("ZIKA")
+cat(Porcentajes(seqZika), "\n\n")
+print("SARS")
+cat(Porcentajes(seqSars), "\n\n")
+print("MERS")
+cat(Porcentajes(seqMers), "\n\n")
+print("DENGUE")
+cat(Porcentajes(seqDengue), "\n\n")
+print("H1N1")
+cat(Porcentajes(seqInfluenza), "\n\n")
+```
+##Problema 4
+```{r}
+complementaria= function(vec){
+  comp = c()
+  for (i in 1:length(vec)){
+    if (vec[i] == 'a'){
+      comp = append(comp,'t')
+    }
+    else if(vec[i] == 't'){
+      comp = append(comp,'a')
+    }
+    else if(vec[i] == 'c'){
+      comp = append(comp,'g')
+    }
+    else if(vec[i] == 'g'){
+      comp = append(comp,'c')
+    }
+  }
+  print('Hebra complementaria inversa')
+  cat("5'-",comp,"-3'")
+}
+
+complementaria(seqCov2)
+
+complementaria(seqZika)
+
+complementaria(seqSars)
+
+complementaria(seqMers)
+
+complementaria(seqDengue)
+
+complementaria(seqInfluenza)
+
+
+```
+
+##Problema 5
+```{r}
+listaCov2= c("ss","DNA","positivo")
+listaSars = c("ss","DNA","positivo")
+listaMers = c("ss","DNA","positivo")
+listaDengue = c("ss","DNA","positivo")
+listaInfluenza = c("ss","DNA","positivo")
+listaZika= c("ss","DNA","positivo")
+
+Baltimore <- function(secuencia){
+  if(secuencia[1] =="ds"){
+    if(secuencia[2] == "DNA"){
+        print("Familia 1")
+     
+      
+    }
+  }
+  else if(secuencia[1] == "ss"){
+    if(secuencia[2] == "DNA"){
+      if(secuencia[3] == "positivo"){
+        print("Familia 2")
+      }
+    }
+  }
+ 
+  else if(secuencia[1] == "ds"){
+    if(secuencia[2] == "RNA"){
+        print("Familia 3")
+    }
+  }
+  
+  else if(secuencia[1] == "ss"){
+    if(secuencia[2] == "RNA"){
+      if(secuencia[3] == "positivo")
+        print("Familia 4")
+    }
+     
+      
+    }
+  }
+  
+  
+  else if(secuencia[1] == "ss"){
+    if(secuencia[2] == "RNA"){
+      if(secuencia[3] == "negativo"){
+        print("Familia 5")
+     
+      }
+    }
+  }
+  
+  
+  else if(secuencia[1] == "ss"){
+    if(secuencia[2] == "RNA"){
+      if(secuencia[3] == "positivo"){
+        print("Familia 6")
+     
+      }
+    }
+  }
+  else if(secuencia[1] == "ds y ss"){
+    if(secuencia[2] == "DNA y RNA") {
+      if(secuencia[3] == "positivo"){
+        print("Familia 7")
+     
+      }
+    }
+  }
+  
+}
+
+print("Clasificacion de Baltimore:")
+print("COVID-19:")
+Baltimore(listaCov2)
+print("Zika:")
+Baltimore(listaZika)
+print("SARS:")
+Baltimore(listaSars)
+print("MERS:")
+Baltimore(listaMers)
+print("Dengue:")
+Baltimore(listaDengue)
+print("H1N1:")
+Baltimore(listaInfluenza)
+```
+

@@ -1,0 +1,6 @@
+id_acceso,nombre,descripcion,molecula,polaridad,hebra
+NC_035889,Zika virus, Zika virus isolate ZIKV/H. sapiens/Brazil/Natal/2015 complete genome (Mlakar J. et al.),RNA,+,ss
+NC_004718.3,SARS coronavirus,SARS coronavirus Tor2 complete genome (He R. et al.),RNA,+,ss
+NC_045512,SARS-Cov2,Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1 complete genome (Wu F. et al.),RNA,+,ss
+NC_019843,MERS,Middle East respiratory syndrome-related coronavirus isolate HCoV-EMC/2012 complete genome (Zaki A.M. et al.),RNA,+,ss
+NC_001477,Dengue virus 1,Dengue virus 1 complete genome (Puri B. et al.),RNA,+,ss

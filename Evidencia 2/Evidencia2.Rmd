@@ -1,0 +1,253 @@
+---
+title: "Entregable 2 Proyecto Integrador"
+author: "Héctor Robles Villareal A01634105, Sophia Fernanda Valencia Bautista A01745091 y Diego Sú Gómez A01620476"
+date: "29 de abril de 2021"
+output: html_document
+---
+
+##Escenario 1: Analizar las secuencias de SARS-CoV-2 reportadas en los 20 países con más casos reportados. Y puedes tratar de responder a la pregunta: ¿Son muy diferentes las variantes entre cada país? ¿Es diferente el SARS-CoV-2 entre las diferentes poblaciones: Asiática, Hispana, Europea o Africana?
+
+Investigación:
+
+¿Cuáles son los virus “similares” a SARS-CoV-2 en el mundo? Obtén tus referencias de PUBMED. 
+SARS-CoV y MERS-CoV. Las secuencias de SARS-CoV-2 junto con las otras dos, además de su capacidad para enfermar al huésped (patogenicidad) que en el que se encuentra son similares de acuerdo a los estudios realizados.  
+Rabaan, A & Al-Ahmed, S & Haque, S & Sah, R & Tiwari, R & Malik, Y & Dhama, K & Yatoo, M & Bonilla, K & Rodriguez, A.(2020). SARS-CoV-2, SARS-CoV, and MERS-COV: A comparative overview. PubMed. Recuperado de  https://pubmed.ncbi.nlm.nih.gov/32275259/ 
+
+¿Cuáles son los coronavirus reportados en otras especies que pueden ser cercanos al genoma de SARS-CoV-2? Incluye de qué especies son y menciona las referencias de los artículos consultados en PUBMED.
+
+De murciélago: HCoV-NL63, HCov-229E, SARS-Cov, MERS-Cov
+De roedores: HCoV- OC43, HCOV-HKU1
+En específico, se han detectado dos especies que son los posibles huéspedes de coronavirus cercanos al genoma del SARS-CoV-2, los murciélagos de herradura de la especie Rhinolophus affinis y los pangolines Manis javanica.
+
+Ye,W & Yuan,S & Yuen,K & Fung,S & Chan,C & Jin,D. (2020). Zoonotic origins of human coronaviruses. Pubmed. Recuperado de https://pubmed.ncbi.nlm.nih.gov/32226286/
+
+Vale,B & Lopes, A & Conceição, M & Silvestre, M & Cardoso, L & Coelho, A. (2021). Bats, pangolins, minks and other animals - villains or victims of SARS-CoV-2?. Pubmed. Recuperado de https://pubmed.ncbi.nlm.nih.gov/33464439/
+
+Moneim, A & Abdelwhab, A. (2020). Evidence for SARS-CoV-2 Infection of Animal Hosts. PubMed. Recuperado de https://pubmed.ncbi.nlm.nih.gov/32629960/
+
+En relación con la situación actual reflexiona, ¿qué propondrías que se deba hacer durante la contingencia del SARS-CoV-2 en comunidades de bajos recursos? Si tu vivieras en una situación de escasos recursos, ¿qué harías? Justifica tu respuesta.
+
+En caso de que tuviéramos que actuar en una comunidad de escasos recursos durante la contingencia del SARS-COV-2, lo que haríamos sería, además del uso obligatorio de cubrebocas, priorizar el aislamiento de las personas, es decir evitar aglomeraciones y reuniones innecesarias, únicamente permitir que haya gente en los hospitales, ya que así evitaríamos al máximo los contagios innecesarios. Por otro lado, también estableceríamos restricciones muy estrictas, que limiten el número de personas que salgan a comprar comida/ agua, es decir, que sea un miembro por familia y que ese miembro sea el que menor riesgo tenga de contagiarse gravemente ( Jóvenes, adultos). Otra cosa que haríamos sería buscar voluntarios que pudieran trabajar en los centros médicos y que no sean personas de riesgo, para también ahí tratar de reducir la probabilidad de que haya decesos. En conclusión, lo principal que se haría en este caso sería limitar los espacios públicos y evitar las salidas de personas que no tengan que hacerlo de forma esencial, además de procurar que las personas expuestas tengan el menor riesgo posible.
+
+
+##Cargar librerías
+```{r}
+library(Biostrings)
+library(seqinr)
+library(adegenet)
+library(ape)
+library(ggtree)
+library(DECIPHER)
+library(viridis)
+library(ggplot2)
+```
+
+##Leer todas las secuencias de los países junto con el dataframe que los organiza
+```{r}
+df <- read.csv("Evidencia02.csv", header = TRUE)
+df
+```
+
+```{r}
+EUA <- read.GenBank(df[1,2],as.character = TRUE)
+Brasil <- read.GenBank(df[2,2],as.character = TRUE)
+Mexico <-read.GenBank(df[3,2],as.character = TRUE)
+India <-read.GenBank(df[4,2],as.character = TRUE)
+UK <-read.GenBank(df[5,2],as.character = TRUE)
+Italia <-read.GenBank(df[6,2],as.character = TRUE)
+Rusia <-read.GenBank(df[7,2],as.character = TRUE)
+Francia <-read.GenBank(df[8,2],as.character = TRUE)
+Alemania <-read.GenBank(df[9,2],as.character = TRUE)
+Espana <- read.GenBank(df[10,2],as.character = TRUE)
+Colombia <- read.GenBank(df[11,2],as.character = TRUE)
+Iran <- read.GenBank(df[12,2],as.character = TRUE)
+Polonia <- read.GenBank(df[13,2],as.character = TRUE)
+Argentina <- read.GenBank(df[14,2],as.character = TRUE)
+Peru <- read.GenBank(df[15,2],as.character = TRUE)
+Sudafrica <- read.GenBank(df[16,2],as.character = TRUE)
+Indonesia <- read.GenBank(df[17,2],as.character = TRUE)
+RepCheca <- read.GenBank(df[18,2],as.character = TRUE)
+Turquia <- read.GenBank(df[19,2],as.character = TRUE)
+Romania <- read.GenBank(df[20,2],as.character = TRUE)
+```
+
+#Calcular la longitud de las secuencias
+```{r}
+dftUSA <- as.data.frame(count(EUA$MW965797, wordsize = 1))
+dftBrasil <- as.data.frame(count(Brasil$MW592707, wordsize = 1))
+dftMexico <- as.data.frame(count(Mexico$MW884219, wordsize = 1))
+dftIndia <- as.data.frame(count(India$MW927136, wordsize = 1))
+dftReinoU <- as.data.frame(count(UK$OA976392, wordsize = 1))
+dftItalia <- as.data.frame(count(Italia$MW852494, wordsize = 1))
+dftRusia <- as.data.frame(count(Rusia$MW741552, wordsize = 1))
+dftFrancia <- as.data.frame(count(Francia$LR881474, wordsize = 1))
+dftAlemania <- as.data.frame(count(Alemania$MW822592, wordsize = 1))
+dftEspana <- as.data.frame(count(Espana$MW976780, wordsize = 1))
+dftColombia <- as.data.frame(count(Colombia$MT470219, wordsize = 1))
+dftIran <- as.data.frame(count(Iran$MW898809, wordsize = 1))
+dftPolonia <- as.data.frame(count(Polonia$HG994158, wordsize = 1))
+dftArgentina <- as.data.frame(count(Argentina$MW633891, wordsize = 1))
+dftPeru <- as.data.frame(count(Peru$MW938089, wordsize = 1))
+dftSudafrica <- as.data.frame(count(Sudafrica$MW981442, wordsize = 1))
+dftIndonesia <- as.data.frame(count(Indonesia$MZ026853, wordsize = 1))
+dftRepCheca <- as.data.frame(count(RepCheca$MT534285, wordsize = 1))
+dftTurquia <- as.data.frame(count(Turquia$MW308549, wordsize = 1))
+dftRomania <- as.data.frame(count(Romania$MW255830, wordsize = 1))
+
+longitud = function(dataframe){
+  tamanio <- 0
+  for (i in 1:4){
+    tamanio <- dataframe[i,2] + tamanio
+  }
+  return(tamanio)
+}
+cat("Tamaño de la secuencia de COVID de USA:",longitud(dftUSA),"\n")
+cat("Tamaño de la secuencia de COVID de Brasil :",longitud(dftBrasil),"\n")
+cat("Tamaño de la secuencia de COVID de Mexico:",longitud(dftMexico),"\n")
+cat("Tamaño de la secuencia de COVID de India:",longitud(dftIndia),"\n")
+cat("Tamaño de la secuencia de COVID de Reino Unido:",longitud(dftReinoU),"\n")
+cat("Tamaño de la secuencia de COVID de Italia:",longitud(dftItalia),"\n")
+cat("Tamaño de la secuencia de COVID de Rusia:",longitud(dftRusia),"\n")
+cat("Tamaño de la secuencia de COVID de Francia:",longitud(dftFrancia),"\n")
+cat("Tamaño de la secuencia de COVID de Alemania:",longitud(dftAlemania),"\n")
+cat("Tamaño de la secuencia de COVID de España:",longitud(dftEspana),"\n")
+cat("Tamaño de la secuencia de COVID de Colombia:",longitud(dftColombia),"\n")
+cat("Tamaño de la secuencia de COVID de Irán:",longitud(dftIran),"\n")
+cat("Tamaño de la secuencia de COVID de Polonia:",longitud(dftPolonia),"\n")
+cat("Tamaño de la secuencia de COVID de Argentina:",longitud(dftArgentina),"\n")
+cat("Tamaño de la secuencia de COVID de Perú:",longitud(dftPeru),"\n")
+cat("Tamaño de la secuencia de COVID de Sudáfrica:",longitud(dftSudafrica),"\n")
+cat("Tamaño de la secuencia de COVID de Indonesia:",longitud(dftIndonesia),"\n")
+cat("Tamaño de la secuencia de COVID de República Checa:",longitud(dftRepCheca),"\n")
+cat("Tamaño de la secuencia de COVID de Turquía:",longitud(dftTurquia),"\n")
+cat("Tamaño de la secuencia de COVID de Romania:",longitud(dftRomania),"\n")
+```
+##Comparación de bases de ADN que tiene el virus
+```{r}
+Nucleotidos <- read.csv("Nucleotidos.csv")
+dfuno <- as.data.frame(Nucleotidos[1:20,])
+dfdos <- as.data.frame(Nucleotidos[21:40,])
+dftres <- as.data.frame(Nucleotidos[41:60,])
+dfcuatro <- as.data.frame(Nucleotidos[61:80,])
+ggplot(data = dfuno, aes(x=Pais,y=Cantidad,fill=Nucleotido))+geom_bar(stat="identity")+scale_fill_manual(values = c("a" = "red", "c" = "green", "g" = "blue", "t"=    "yellow"))
+ggplot(data = dfdos, aes(x=Pais,y=Cantidad,fill=Nucleotido))+geom_bar(stat="identity")+scale_fill_manual(values = c("a" = "red", "c" = "green", "g" = "blue", "t"=    "yellow"))
+ggplot(data = dftres, aes(x=Pais,y=Cantidad,fill=Nucleotido))+geom_bar(stat="identity")+scale_fill_manual(values = c("a" = "red", "c" = "green", "g" = "blue", "t"=    "yellow"))
+ggplot(data = dfcuatro, aes(x=Pais,y=Cantidad,fill=Nucleotido))+geom_bar(stat="identity")+scale_fill_manual(values = c("a" = "red", "c" = "green", "g" = "blue", "t"=    "yellow"))
+```
+
+```{r}
+ids <- c()
+paises <-c()
+for (i in 1:20){
+  ids <- append(ids,df[i,2])
+  paises <- append(paises,df[i,1])
+}
+paises
+ids
+```
+
+```{r}
+dfViruses <- data.frame(id = ids, pais = paises)
+dfViruses
+```
+
+```{r}
+virus_secuencias <- read.GenBank(dfViruses[,1])
+virus_secuencias
+```
+
+```{r}
+write.dna(virus_secuencias,  
+          file ="virus_seqs.fasta2", format = "fasta", append =
+FALSE, nbcol = 6, colsep = "", colw = 40)
+```
+
+```{r}
+virus_seq_no_alineadas <- readDNAStringSet("virus_seqs.fasta2", format = "fasta")
+virus_seq_no_alineadas
+```
+
+```{r}
+virus_seq_no_alineadas <- OrientNucleotides(virus_seq_no_alineadas)
+```
+
+```{r}
+virus_seq_alineadas <- AlignSeqs(virus_seq_no_alineadas)
+```
+
+```{r}
+BrowseSeqs(virus_seq_alineadas, highlight = 0)
+```
+
+```{r}
+writeXStringSet(virus_seq_alineadas, file = "virus_align_seq.fasta2")
+```
+
+```{r}
+virus_aligned <- read.alignment("virus_align_seq.fasta2", format = "fasta")
+```
+
+```{r}
+matriz_distancias <- dist.alignment(virus_aligned, matrix = "similarity")
+matriz_distancias
+```
+
+```{r}
+virus_str_filogenetico <- njs(matriz_distancias)
+virus_str_filogenetico
+class(virus_str_filogenetico)
+
+```
+
+```{r}
+virus_plot <- ladderize(virus_str_filogenetico)
+plot(virus_plot)
+title("SARS_COV2")
+```
+
+```{r}
+ggtree(virus_plot) + geom_tiplab()
+```
+
+```{r}
+msaplot(p=ggtree(virus_plot) +geom_tiplab(), 
+fasta="virus_align_seq.fasta2",width = 1, window=c(150, 200), offset = 0.015,height = 0.5)
+```
+
+
+
+
+
+#Árbol filogenético final
+```{r}
+msaplot(p=ggtree(virus_plot)  %<+% dfViruses+ geom_tiplab(aes(label=pais)), fasta="virus_align_seq.fasta2",width = 1, window=c(150, 200), offset = 0.015, height = 0.8)
+```
+
+
+
+
+
+Interpretaciones:
+
+¿Son muy diferentes las variantes entre cada país? ¿Es diferente el SARS-CoV-2 entre las diferentes poblaciones: Asiática, Hispana, Europea o Africana?
+Tras haber realizado las gráficas correspondientes y haber identificado la composición de cada variante del coronavirus, se pueden observar distintos puntos importantes entre las secuencias. La composición en general de todas las variantes es muy similar, sin embargo, se puede ver que la variante alemana tiene una mayor cantidad de Guaninas que el resto. Esto indica que en algún punto de la cadena de la variante alemana hubo un cambio en la secuencia, que pudo ocurrir debido a muchos factores, tales como el clima, humedad, entre otros. Otro factor interesante es que las secuencias de Argentina y de algunos países sudamericanos son más cortas que el resto, por lo que esto podría modelar una similitud entre estas variantes. Además, la secuencia de Estados Unidos también tiene una longitud menor al resto, lo que también representa un cambio significativo con respecto al resto de variantes. En conclusión, se puede decir que las variantes de los países son similares entre ellas en un 90%, pero aún así hay algunas diferencias puntuales que las podrían distinguir del resto. Por ejemplo, las variantes sudamericanas son un poco más cortas, al igual que la de Estados Unidos. Por otro lado, las de los países asiáticos como India e Indonesia son prácticamente iguales entre las dos, por lo que eso también puede facilitar su reconocimiento. También, se puede observar que, como la mayoría de las variantes son europeas, estas tienen una gran similitud entre ellas y no hay un rasgo tan significativo que las distinga del resto del mundo, por lo que se puede decir que, a menos que se encuentren diferencias exactas en el número de nucleótidos, no hay ninguna diferencia significativa que destacar.
+
+
+Conclusiones
+
+En este caso de estudio pudimos analizar al virus SARS-CoV-2, conocer su estructura y cómo son los diferentes genomas según lo que reporta cada región del mundo en NCBI. Seleccionando los primeros 20 países con más muertes causadas por este virus, logramos realizar un análisis de la cantidad de cada nucleótido que contiene el genoma, también conocer el tamaño de la secuencia y así cargar éstas a un archivo de tipo FASTA, corregir las secuencias, crear una matriz de alineamiento con base en el método UPGMA que nos dice qué tan diferentes son las secuencias una de otra, posteriormente observar el alineamiento, guardar el resultado, obtener un archivo, crear una matriz de la distancia que hay entre cada genoma y así poder generar unas gráficas con la cantidad de nucleótidos en cada país y a la vez que se comparen las secuencias de SARS-CoV-2. Finalmente, formamos nuestro árbol filogenético para poder visualizar mejor cuál es el nodo 0 y cómo se van generando las ramas con los predecesores y sucesores.
+
+
+#Citas de las librerías usadas
+```{r}
+citation("Biostrings")
+citation("seqinr")
+citation("adegenet")
+citation("ape")
+citation("ggtree")
+citation("DECIPHER")
+citation("viridis")
+citation("ggplot2")
+
+```
+

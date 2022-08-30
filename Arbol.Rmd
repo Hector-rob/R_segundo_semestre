@@ -1,0 +1,14 @@
+---
+title: "Arbol"
+author: "Hector"
+date: "4/23/2021"
+output: html_document
+---
+
+```{r}
+library(ape)
+text.string <- "(((Orangutans)),((Gorillas,((Bonobos,Chimpanzees),Humans))));"
+vert.tree <- read.tree(text = text.string)
+plot(vert.tree, no.margin = TRUE)
+```
+

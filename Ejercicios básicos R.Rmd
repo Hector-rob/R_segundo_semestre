@@ -1,0 +1,84 @@
+---
+title: "Actividad"
+author: "Hector"
+date: "3/23/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ejercicio 1
+```{r}
+deficiente = function(n){
+  suma = 0
+  for(dato in 1:(n-1)){
+    if((n%%dato) == 0){
+      suma = suma + dato
+    }
+  }
+  if (suma < n){
+    return (TRUE)
+  }
+  else{
+    return(FALSE)
+  }
+  }
+
+print(deficiente(12))
+
+```
+##Ejercicio 2
+```{r}
+NumerosPrimos <- function(Num){
+  for (x in 2:Num){
+    if(Num%%x==0){
+      return(FALSE)
+      break
+    }
+    else{
+      return(TRUE)
+      break
+    }
+  }
+  
+}
+print(NumerosPrimos(17))
+```
+##Ejercicio 3
+```{r}
+suma = 0
+tres = function(m){
+  for (x in 0:m){
+    resultado = 2^x
+    suma = suma + resultado
+  }
+  return (suma)
+}
+print(tres(20))
+```
+##Ejercicio 4
+```{r}
+GCD <- function(A,B){
+ if(A>B){
+   N1 <- A
+ }
+  else{
+    N1 <- B 
+  }
+  for(b in 1:N1){
+    if(A%%b == 0){
+      if(B%%b == 0){
+        Multiplo = b
+      }
+    }
+  }
+  return(Multiplo)
+}
+
+print(GCD(32,64))
+
+```
+
+
